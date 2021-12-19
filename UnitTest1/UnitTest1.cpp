@@ -45,7 +45,7 @@ namespace UnitTestCalculator
 			str_num4 = "5*cos0";
 			Assert::IsTrue(str_num4[0] == '5');
 		}
-		TEST_METHOD(Test_Posfix) {
+		TEST_METHOD(Test_Postfix) {
 			String str;
 			char six = '6', nine = '9', eight = '8', one = '1', minus = '-', multi = '*', plus = '+', degree = '^';
 			str = "9-8*1+6^8";
