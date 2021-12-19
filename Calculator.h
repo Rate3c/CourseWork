@@ -37,7 +37,7 @@ double Operand_for_two_elem(char operand, double numb_1, double numb_2) {
 	//Difference
 	if (operand == 44) { result = numb_1 - numb_2; }
 	//Multiplication
-	if (operand == 46) { result = numb_1 * numb_2; }
+	if (operand == 46) { result = numb_1 * numb_2; }	
 	//Division
 	if (operand == 47) { result = numb_1 / numb_2; }
 	//Expanding a number
@@ -167,7 +167,9 @@ void Postfix_notation_and_Calculation(String& str) {
 	char dot = '.', virgule = ',', multiplication = '*', minus = '-', space = ' ', exclamation = '!', s = 's', c = 'c', l = 'l', exp = 'e', t = 't';
 	char q = 'q';
 	bool check = true, correct = false;
+
 	for (int i = 0; i < kol_simv; i++) {
+
 		if (correct == false) {
 			correct = true;
 

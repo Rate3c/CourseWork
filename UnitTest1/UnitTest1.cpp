@@ -40,6 +40,10 @@ namespace UnitTestCalculator
 			Culculate(unar_m, str_num3);
 			Assert::IsTrue(str_num3[0] == minus);
 			Assert::IsTrue(str_num3[1] == five);
+
+			String str_num4;
+			str_num4 = "5*cos0";
+			Assert::IsTrue(str_num4[0] == '5');
 		}
 		TEST_METHOD(Test_Posfix) {
 			String str;
