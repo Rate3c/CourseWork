@@ -11,7 +11,8 @@ private:
 	char* str;
 	int length;
 public:
-	static const int limit = 90;
+
+	static const int limit = 100;
 
 	//Constructor without parameters
 	String() {
@@ -21,16 +22,16 @@ public:
 	}
 
 	//Constructors with parameters
-	String(const char* simv) {
-		length = std::strlen(simv);
+	String(const char* symb) {
+		length = std::strlen(symb);
 		str = new char[length + 1];
-		std::strcpy(str, simv);
+		std::strcpy(str, symb);
 	}
 
-	String(const String& stroka) {
-		length = stroka.length;
+	String(const String& myString) {
+		length = myString.length;
 		str = new char[length + 1];
-		std::strcpy(str, stroka.str);
+		std::strcpy(str, myString.str);
 	}
 
 	//Destructor
@@ -51,13 +52,13 @@ public:
 	}
 
 	//Returns the last character
-	char last_simv(String stroka) {
-		char simv = stroka[length - 1];
-		return simv;
+	char last_symb(String myString) {
+		char symb = myString[length - 1];
+		return symb;
 	}
 
 	//Removes the last character
-	void pop_last_simv() {
+	void pop_last_symb() {
 		str[length - 1] = '\0';
 		length--;
 	}
@@ -68,29 +69,29 @@ public:
 	}
 
 	//Overloading the assignment operator when 2 objects of a class
-	String& operator=(const String& stroka) {
+	String& operator=(const String& myString) {
 		delete[] str;
-		length = stroka.length;
+		length = myString.length;
 		str = new char[length + 1];
-		std::strcpy(str, stroka.str);
+		std::strcpy(str, myString.str);
 		return *this;
 	}
 
 	//Overloading the assignment operator when 1 is an object of a class and the other is a variable of type char
-	String& operator=(const char simv) {
+	String& operator=(const char symb) {
 		delete[] str;
-		length = std::strlen(&simv);
+		length = std::strlen(&symb);
 		str = new char[length + 1];
-		std::strcpy(str, &simv);
+		std::strcpy(str, &symb);
 		return *this;
 	}
 
 	//Overloading the assignment operator when 1 is a class object and the other is quoted directly
-	String& operator=(const char* simv) {
+	String& operator=(const char* symb) {
 		delete[] str;
-		length = std::strlen(simv);
+		length = std::strlen(symb);
 		str = new char[length + 1];
-		std::strcpy(str, simv);
+		std::strcpy(str, symb);
 		return *this;
 	}
 
@@ -106,39 +107,39 @@ public:
 	}
 
 	//Overloading the summation operator when 1 is an object of a class and the other is a variable of type char
-	friend String operator+(const String& str1, const char simv) {
+	friend String operator+(const String& str1, const char symb) {
 		String temp;
 		delete[] temp.str;
-		temp.length = str1.length + sizeof(simv);
+		temp.length = str1.length + sizeof(symb);
 		temp.str = new char[temp.length + 1];
 		std::strcpy(temp.str, str1.str);
-		std::strcpy(temp.str + str1.length, &simv);
+		std::strcpy(temp.str + str1.length, &symb);
 		return temp;
 	}
 
 	//Overloading the sum operator when 1 is a class object and the other is quoted directly
-	friend String operator+(const String& str1, const char* simv) {
+	friend String operator+(const String& str1, const char* symb) {
 		String temp;
 		delete[] temp.str;
-		temp.length = str1.length + sizeof(simv);
+		temp.length = str1.length + sizeof(symb);
 		temp.str = new char[temp.length + 1];
 		std::strcpy(temp.str, str1.str);
-		std::strcpy(temp.str + str1.length, simv);
+		std::strcpy(temp.str + str1.length, symb);
 		return temp;
 	}
 
 	//Overloading the inference statement
-	friend ostream& operator<<(ostream& stream, const String& stroka) {
-		stream << stroka.str;
+	friend ostream& operator<<(ostream& stream, const String& myString) {
+		stream << myString.str;
 		return stream;
 	}
 
 	//Input Operator Overload
-	friend istream& operator>>(istream& stream, String& stroka) {
-		char temp[limit];
-		stream.get(temp, limit);
+	friend istream& operator>>(istream& stream, String& myString) {
+		char temp;
+		stream.get(temp);
 		if (stream)
-			stroka = temp;
+			myString = temp;
 		while (stream && stream.get() != '\n')
 			continue;
 		return stream;
